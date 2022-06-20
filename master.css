@@ -194,9 +194,3 @@ table {
 table, th, td {
   border: 1px solid;
 }
-
-.logo img{
-  width: 50%;
-  height: 50%;
-  left: 100px;
-}
