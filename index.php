@@ -12,13 +12,9 @@
 <?php
 include 'nav-bar.php';
 
-if (isset($_GET['lang'])) {
-    $language = $_GET['lang'];
-} else {
-    $language = "EN";
-}
+$language = $_GET['lang'] ?? "EN";
 include 'content' . $language . '.php';
-include  'items.php'
+include  'items.php';
 ?>
 
 </body>
