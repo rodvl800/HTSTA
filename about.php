@@ -6,24 +6,14 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
       rel="stylesheet"/>
-    <link rel="stylesheet" href="../master.css" />
-    <link rel="icon" type="image/png" href="../photos/logo.png">
+    <link rel="stylesheet" href="master.css" />
+    <link rel="icon" type="image/png" href="photos/logo.png">
     <title>About</title>
   </head>
   <body>
-    <nav class="container">
-      <a href="../index.php" class="logo"><img src="../photos/logo.png" alt="logo"></a>
-      <div class="heading">
-        <h4>Emile Metz Gun shop</h4>
-      </div>
-      <ul class="nav-links">
-        <li><a href="../index.php">Home</a><br><br><a href="#"><img src="../photos/EN-icon.png" alt=""></a></li>
-        <li><a class="active" href="about.html" >About</a><br><br><a href="aboutfr.html"><img src="../photos/FR-icon.png" alt=""></a></li>
-        <li><a href="../pages/contact.html">Contact</a><br><br><a href="aboutlu.html"><img src="../photos/LU-icon.png" alt=""></a></li>
-        <li><a href="../pages/product.html">Product</a><br><br><a href="aboutru.html"><img src="../photos/RU-icon.png" alt=""></a></li>
-        <li><a href="../pages/members.html">Members</a></li>
-      </ul>
-    </nav>
+    <?php
+    include 'nav-bar.php';
+    ?>
     <div class="body-text-about"><h1>Here is some information about our company!</h1></div>
     <br>
     <div class="about">
@@ -36,7 +26,7 @@
     <div>
       <h2 class="description-heading">Our company is focused on safety and quality</h2>
       <p class="description-text">A safe and healthy workplace not only protects workers from injury and illness, it can also lower injury/illness costs, reduce absenteeism and turnover, increase productivity and quality, and raise employee morale. In other words, safety is good for business. Plus, protecting workers is the right thing to do.</p>
-      <img id="safety" src="../photos/safety.jpg" alt="safety">
+      <img id="safety" src="photos/safety.jpg" alt="safety">
     </div>
     <div class="footer">
       <p>
