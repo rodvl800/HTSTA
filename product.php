@@ -6,52 +6,42 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
       rel="stylesheet"/>
-    <link rel="stylesheet" href="../master.css" />
-    <link rel="icon" type="image/png" href="../photos/logo.png">
+    <link rel="stylesheet" href="master.css" />
+    <link rel="icon" type="image/png" href="photos/logo.png">
     <title>Product</title>
   </head>
   <body>
-    <nav class="container">
-      <a href="../index.php" class="logo"><img src="../photos/logo.png" alt="logo"></a>
-      <div class="heading">
-        <h4>Emile Metz Gun shop</h4>
-      </div>
-      <ul class="nav-links">
-        <li><a href="../index.php">Home</a><br><br><a href="#"><img src="../photos/EN-icon.png" alt=""></a></li>
-        <li><a href="../about.php" >About</a><br><br><a href="productfr.html"><img src="../photos/FR-icon.png" alt=""></a></li>
-        <li><a href="../pages/contact.html">Contact</a><br><br><a href="productlu.html"><img src="../photos/LU-icon.png" alt=""></a></li>
-        <li><a class="active" href="../pages/product.html">Product</a><br><br><a href="productru.html"><img src="../photos/RU-icon.png" alt=""></a></li>
-        <li><a href="../pages/members.html">Members</a></li>
-      </ul>
-    </nav>
+      <?php
+      include 'nav-bar.php';
+      ?>
     <div class="body-text"><h1>In our shop we have a big variety of products!</h1></div>
     <br> 
     <div class="card">
-      <img src="../photos/guns/1.png" alt="Gun" style="width:100%">
+      <img src="photos/guns/1.png" alt="Gun" style="width:100%">
       <h1>Springfield Semi-Auto Pistol</h1>
       <p class="price">$579.99</p>
       <p>Cartridge or Gauge: 9mm <br>Finish: Black <br>Stock Color: Black</p>
       <p><button>Add to Cart</button></p>
     <br><br>
-      <img src="../photos/guns/2.png" alt="Gun" style="width:100%">
+      <img src="photos/guns/2.png" alt="Gun" style="width:100%">
       <h1>M&P15 Semi-Auto Rifle</h1>
       <p class="price">$799.99</p>
       <p>Finish: Black <br>Stock Color: Black <br>Cartridge or Gauge</p>
       <p><button>Add to Cart</button></p>
     <br><br>
-      <img src="../photos/guns/3.png" alt="Gun" style="width:100%">
+      <img src="photos/guns/3.png" alt="Gun" style="width:100%">
       <h1>Ruger Wrangler Rimfire Revolver</h1>
       <p class="price">$209.99</p>
       <p>Cartridge or Gauge: .22 Long Rifle <br>Finish: Black Cerakote <br>Stock Color: Black</p>
       <p><button>Add to Cart</button></p> 
     <br><br>
-      <img src="../photos/guns/4.png" alt="Gun" style="width:100%">
+      <img src="photos/guns/4.png" alt="Gun" style="width:100%">
       <h1>Crickett Single-Shot Rimfire Rifle</h1>
       <p class="price">$239.99</p>
       <p>Cartridge or Gauge: .22 Long Rifle <br>Finish: Blued <br>Stock Color: Purple Laminate</p>
       <p><button>Add to Cart</button></p>
     <br><br>
-      <img src="../photos/guns/5.png" alt="Gun" style="width:100%">
+      <img src="photos/guns/5.png" alt="Gun" style="width:100%">
       <h1>Savage Bolt Rifle in TrueTimber Strata</h1>
       <p class="price">$399.99</p>
       <p>Finish: Black <br>Stock Color: TrueTimber Strata <br>Cartridge or Gauge</p>

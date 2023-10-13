@@ -6,25 +6,14 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
       rel="stylesheet"/>
-    <link rel="stylesheet" href="../master.css" />
-    <link rel="icon" type="image/png" href="../photos/logo.png">
+    <link rel="stylesheet" href="master.css" />
+    <link rel="icon" type="image/png" href="photos/logo.png">
     <title>Contact</title>
   </head>
   <body>
-    <nav class="container">
-      <a href="../index.php" class="logo"><img src="../photos/logo.png" alt="logo"></a>
-
-      <div class="heading">
-        <h4>Emile Metz Gun shop</h4>
-      </div>
-      <ul class="nav-links">
-        <li><a href="../index.php">Home</a><br><br><a href="#"><img src="../photos/EN-icon.png" alt=""></a></li>
-        <li><a href="../about.php" >About</a><br><br><a href="contactfr.html"><img src="../photos/FR-icon.png" alt=""></a></li>
-        <li><a class="active" href="../pages/contact.html">Contact</a><br><br><a href="contactlu.html"><img src="../photos/LU-icon.png" alt=""></a></li>
-        <li><a href="../pages/product.html">Product</a><br><br><a href="contactru.html"><img src="../photos/RU-icon.png" alt=""></a></li>
-        <li><a href="../pages/members.html">Members</a></li>
-      </ul>
-    </nav>
+  <?php
+    include 'nav-bar.php';
+  ?>
     <div class="body-text">
         <h1>How to find us?</h1>
     </div>
