@@ -1,0 +1,6 @@
+.DS_Store
+package-lock.json
+.idea/.DS_Store
+.idea/prettier.xml
+.idea/dictionaries/vroddmy.xml
+.idea/
