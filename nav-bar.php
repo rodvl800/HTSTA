@@ -1,7 +1,7 @@
 <?php
 $language = $_GET['lang'] ?? "EN";
 $page = $_GET['page'] ?? "index";
-global $pageIndex, $pageAbout, $pageContact, $pageProduct, $pageMembers;
+global $pageIndex, $pageAbout, $pageContact, $pageProduct, $pageMembers, $pageAccount;
 
 if ($page == "about") {
     $pageAbout = "active";
@@ -11,6 +11,8 @@ if ($page == "about") {
     $pageProduct = "active";
 } else if($page == "members") {
     $pageMembers = "active";
+} else if($page == "account") {
+    $pageAccount = "active";
 } else{
     $pageIndex = "active";
 }
@@ -31,5 +33,6 @@ if ($page == "about") {
         <li><a class="<?php echo $pageProduct; ?>" href="product.php?page=product">Product</a><br><br>
             <a href="<?php echo $page;?>.php?lang=RU&page=<?php echo $page;?>"><img src="photos/RU-icon.png" alt=""></a></li>
         <li><a class="<?php echo $pageMembers; ?>" href="members.php?page=members">Members</a></li>
+        <li><a class="<?php echo $pageAccount; ?>" href="account.php?page=account">Account</a></li>
     </ul>
 </nav>

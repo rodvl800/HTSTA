@@ -1,5 +1,4 @@
 <div class="body-text-about"><h1>Hei e puer Informatiounen iwwer eis Firma!</h1></div>
-<br>
 <div class="about">
   <ul id="ul">
     <li>Eis Firma gouf 2012 vun enger Grupp vu Lycée Schüler gegrënnt</li>

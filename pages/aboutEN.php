@@ -1,5 +1,4 @@
 <div class="body-text-about"><h1>Here is some information about our company!</h1></div>
-<br>
 <div class="about">
     <ul id="ul">
         <li>Our company was founded in 2012 by a group of high-school students</li>

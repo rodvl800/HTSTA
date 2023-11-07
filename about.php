@@ -20,10 +20,6 @@
 
     <img id="safety" src="photos/safety.jpg" alt="safety">
 
-    <div class="footer">
-      <p>
-        @Rodomanov Vladislav 4TPIFI
-      </p>
-    </div>
+    <?php include 'footer.php'; ?>
   </body>
 </html>
