@@ -12,7 +12,7 @@
 <?php
 include 'nav-bar.php';
 $language = $_GET['lang'] ?? "EN";
-include 'content' . $language . '.php';
+include 'pages/index' . $language . '.php';
 include  'items.php';
 ?>
 

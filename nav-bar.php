@@ -22,10 +22,14 @@ if ($page == "about") {
         <h4>Emile Metz Gun shop</h4>
     </div>
     <ul class="nav-links">
-        <li><a class="<?php echo $pageIndex; ?>" href="index.php?page=index">Home</a><br><br><a href="<?php echo $page;?>.php?lang=EN"><img src="photos/EN-icon.png" alt=""></a></li>
-        <li><a class="<?php echo $pageAbout; ?>" href="about.php?page=about">About</a><br><br><a href="<?php echo $page;?>.php?lang=FR"><img src="photos/FR-icon.png" alt=""></a></li>
-        <li><a class="<?php echo $pageContact; ?>" href="contact.php?page=contact">Contact</a><br><br><a href="<?php echo $page;?>.php?lang=LU"><img src="photos/LU-icon.png" alt=""></a></li>
-        <li><a class="<?php echo $pageProduct; ?>" href="product.php?page=product">Product</a><br><br><a href="<?php echo $page;?>.php?lang=RU"><img src="photos/RU-icon.png" alt=""></a></li>
+        <li><a class="<?php echo $pageIndex; ?>" href="index.php?page=index">Home</a><br><br>
+            <a href="<?php echo $page;?>.php?lang=EN&page=<?php echo $page;?>"><img src="photos/EN-icon.png" alt=""></a></li>
+        <li><a class="<?php echo $pageAbout; ?>" href="about.php?page=about">About</a><br><br>
+            <a href="<?php echo $page;?>.php?lang=FR&page=<?php echo $page;?>"><img src="photos/FR-icon.png" alt=""></a></li>
+        <li><a class="<?php echo $pageContact; ?>" href="contact.php?page=contact">Contact</a><br><br>
+            <a href="<?php echo $page;?>.php?lang=LU&page=<?php echo $page;?>"><img src="photos/LU-icon.png" alt=""></a></li>
+        <li><a class="<?php echo $pageProduct; ?>" href="product.php?page=product">Product</a><br><br>
+            <a href="<?php echo $page;?>.php?lang=RU&page=<?php echo $page;?>"><img src="photos/RU-icon.png" alt=""></a></li>
         <li><a class="<?php echo $pageMembers; ?>" href="members.php?page=members">Members</a></li>
     </ul>
 </nav>
