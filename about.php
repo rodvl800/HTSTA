@@ -15,11 +15,15 @@
     include 'nav-bar.php';
 
     $language = $_GET['lang'] ?? "EN";
-    include 'pages/about' . $language . '.php';
+    include 'about/about' . $language . '.php';
     ?>
 
     <img id="safety" src="photos/safety.jpg" alt="safety">
 
-    <?php include 'footer.php'; ?>
+    <div class="footer">
+      <p>
+        @Rodomanov Vladislav 4TPIFI
+      </p>
+    </div>
   </body>
 </html>

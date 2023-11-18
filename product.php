@@ -13,13 +13,8 @@
   <body>
       <?php
       include 'nav-bar.php';
-      $language = $_GET['lang'] ?? "EN";
-      include 'pages/product' . $language . '.php';
+      include 'pages/productMulti.php';
+      include 'footer.php';
       ?>
-  <div class="footer">
-      <p>
-        @Rodomanov Vladislav 4TPIFI
-      </p>
-    </div>
   </body>
 </html>

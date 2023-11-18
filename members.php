@@ -14,7 +14,7 @@
       <?php
       include 'nav-bar.php';
       $language = $_GET['lang'] ?? "EN";
-      include 'pages/members' . $language . '.php';
+      include 'members/members' . $language . '.php';
       include 'footer.php';
       ?>
   </body>

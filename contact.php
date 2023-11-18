@@ -14,7 +14,7 @@
   <?php
     include 'nav-bar.php';
     $language = $_GET['lang'] ?? "EN";
-    include 'pages/contact' . $language . '.php';
+    include 'contact/contact' . $language . '.php';
   ?>
     <br>
     <div class="map">
