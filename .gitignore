@@ -4,3 +4,4 @@ package-lock.json
 .idea/prettier.xml
 .idea/dictionaries/vroddmy.xml
 .idea/
+.prettierrc
