@@ -42,8 +42,9 @@ if (isset($_POST['UserName'], $_POST['Password'], $_POST['PasswordAgain'], $_POS
     $password = $_POST['Password'];
     $passwordAgain = $_POST['PasswordAgain'];
     $country = $_POST['Country'];
-    if ($userName === "" || $password === "" || $passwordAgain === "") {
+    if ($userName == "" || $password == "" || $passwordAgain == "") {
         $UserIsValid = false;
+        echo "Please fill in all the fields!";
     }
     else if ($password === $passwordAgain) {
         $UserIsValid = true;

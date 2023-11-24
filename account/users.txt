@@ -1,6 +1,0 @@
-1;1;Luxembourg
-2;2;Luxembourg
-3;3;Luxembourg
-4;4;Luxembourg
-6;6;Luxembourg
-5;3;Luxembourg

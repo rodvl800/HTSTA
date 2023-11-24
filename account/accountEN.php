@@ -50,13 +50,14 @@ if (isset($_POST['UserName'], $_POST['Password'], $_POST['PasswordAgain'], $_POS
     // Check if any of the required fields is empty
     if (empty($userName) || empty($password) || empty($passwordAgain)) {
         $UserIsValid = false;
+        echo "Please fill in all the fields!";
     } elseif ($password !== $passwordAgain) {
         echo "Passwords do not match!";
         $UserIsValid = false;
     }
 
     if ($UserIsValid) {
-        $fileHandle = fopen("users.txt", "a+");
+        $fileHandle = fopen("users.txt", "r");
 
         while (!feof($fileHandle)) {
             $userLine = fgets($fileHandle);
@@ -69,15 +70,19 @@ if (isset($_POST['UserName'], $_POST['Password'], $_POST['PasswordAgain'], $_POS
                 break;
             }
         }
+        fclose($fileHandle);
+
 
         // If the username is valid, add it to the file
         if ($UserIsValid) {
             $userLine = $userName . ";" . $password . ";" . $country . "\n";
+            $fileHandle = fopen("users.txt", "a");
             fwrite($fileHandle, $userLine);
             echo "User successfully registered!";
+            fclose($fileHandle);
         }
 
-        fclose($fileHandle);
+
     }
 }
 ?>

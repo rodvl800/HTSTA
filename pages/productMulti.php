@@ -59,7 +59,6 @@
 <div class="AllProducts">
     <?php
 
-
     $handle = fopen("Products" . $language . ".csv", "r");
     if ($handle) {
         fgets($handle);
@@ -68,21 +67,23 @@
 
         while (!feof($handle)) {
             $line = fgets($handle);
-            $product = explode(",", $line);
+            $product = explode(";", $line);
 
             $productName = $product[0];
-            $quantity = $product[1];
+            $price = $product[1];
             $description = $product[2];
-            $imagePath = $product[3];
-            $price = $product[4];
+            $finish = $product[3];
+            $stock = $product[4];
+            $image = $product[5];
 
-            $productsArray[] = "$productName;$quantity;$description;$imagePath;$price";
+            $productsArray[] = "$productName;$price;$description;$finish;$stock;$image";
         }
 
         fclose($handle);
 
         foreach ($productsArray as $product) {
             $productValues = explode(";", $product);
+
 
             echo '<div class="card">';
             echo '<br>';
@@ -96,6 +97,9 @@
             echo '<br><br>';
             echo '</div>';
         }
+    }
+    else {
+        echo "Error opening file!";
     }
     ?>
 </div>
