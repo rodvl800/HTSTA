@@ -1,7 +1,7 @@
 <?php
 $language = $_GET['lang'] ?? "EN";
 $page = $_GET['page'] ?? "index";
-global $pageIndex, $pageAbout, $pageContact, $pageProduct, $pageMembers, $pageAccount;
+global $pageIndex, $pageAbout, $pageContact, $pageProduct, $pageMembers, $pageRegister, $pageLogin;
 
 if ($page == "about") {
     $pageAbout = "active";
@@ -11,14 +11,20 @@ if ($page == "about") {
     $pageProduct = "active";
 } else if($page == "members") {
     $pageMembers = "active";
-} else if($page == "account") {
-    $pageAccount = "active";
+} else if($page == "register") {
+    $pageRegister = "active";
+} else if($page == "login") {
+		$pageLogin = "active";
 } else{
     $pageIndex = "active";
 }
 ?>
 
 <nav class="container">
+	<ul class="login-links">
+		        <li><a class="<?php echo $pageRegister; ?>" href="register.php?page=register">Register</a></li>
+						<li><a class="<?php echo $pageLogin; ?>" href="login.php?page=login">Login</a></li>
+	</ul>
     <a href="#" class="logo"><img src="photos/logo.png" alt="logo"></a>
     <div class="heading">
         <h4>Emile Metz Gun shop</h4>
@@ -33,6 +39,5 @@ if ($page == "about") {
         <li><a class="<?php echo $pageProduct; ?>" href="product.php?page=product">Product</a><br><br>
             <a href="<?php echo $page;?>.php?lang=RU&page=<?php echo $page;?>"><img src="photos/RU-icon.png" alt=""></a></li>
         <li><a class="<?php echo $pageMembers; ?>" href="members.php?page=members">Members</a></li>
-        <li><a class="<?php echo $pageAccount; ?>" href="account.php?page=account">Account</a></li>
-    </ul>
+		</ul>
 </nav>

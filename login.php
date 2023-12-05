@@ -7,14 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="master.css" />
     <link rel="icon" type="image/png" href="photos/logo.png">
-    <title>Account</title>
+    <title>Login</title>
 </head>
 <body>
 <?php
 include 'nav-bar.php';
 $language = $_GET['lang'] ?? "EN";
-include 'account/account' . $language . '.php';
-include 'footer.php';
+include 'account/login' . $language . '.php';
 ?>
 </body>
 </html>

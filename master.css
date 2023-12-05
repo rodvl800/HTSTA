@@ -74,6 +74,34 @@ html {
 	background-color: #4caf50;
 }
 
+.login-links {
+	margin-top: 10px;
+
+}
+
+.login-links li {
+	list-style: none;
+	margin-bottom:20px;
+}
+
+.login-links a {
+	color: white;
+	text-decoration: none;
+	letter-spacing: 3px;
+	font-weight: bold;
+	font-size: 14px;
+	padding: 10px 16px;
+}
+
+.login-links a:hover:not(.active) {
+	background-color: lightseagreen;
+}
+
+.login-links li a.active {
+	background-color: #4caf50;
+}
+
+
 .container {
 	animation: transitionIn 1s;
 }
