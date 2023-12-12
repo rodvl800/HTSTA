@@ -14,7 +14,7 @@
 include 'nav-bar.php';
 $language = $_GET['lang'] ?? "EN";
 //include 'account/register' . $language . '.php';
-include 'account/redel.php';
+include 'account/regdel.php';
 
 ?>
 </body>
