@@ -15,7 +15,9 @@ if ($page == "about") {
     $pageRegister = "active";
 } else if($page == "login") {
 		$pageLogin = "active";
-} else{
+} else if($page == "AddProduct") {
+    $pageProduct = "active";
+}else{
     $pageIndex = "active";
 }
 ?>
