@@ -1,5 +1,5 @@
 <div class="footer">
     <p>
-        @Rodomanov Vladislav 4TPIFI
+        @Rodomanov Vladislav 2TPIFI
     </p>
 </div>

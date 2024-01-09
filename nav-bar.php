@@ -27,7 +27,7 @@ if ($page == "about") {
 		        <li><a class="<?php echo $pageRegister; ?>" href="register.php?page=register">Register</a></li>
 						<li><a class="<?php echo $pageLogin; ?>" href="login.php?page=login">Login</a></li>
 	</ul>
-    <a href="#" class="logo"><img src="photos/logo.png" alt="logo"></a>
+    <a href="index.php?page=index" class="logo"><img src="photos/logo.png" alt="logo"></a>
     <div class="heading">
         <h4>Emile Metz Gun shop</h4>
     </div>
