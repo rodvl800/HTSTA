@@ -18,7 +18,7 @@ $lang_array = [
     "EN" => "Add new products in English",
     "FR" => "Ajouter de nouveaux produits en Français",
     "RU" => "Добавляйте новые продукты на Русском",
-    "LU" => "In den Warenkorb legen"];
+    "LU" => "Nei Produkter op Lëtzebuergesch dobäisetzen"];
 echo "<h1>$lang_array[$language]</h1>";
 include 'pages/AddProductMulti.php';
 ?>

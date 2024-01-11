@@ -4,35 +4,34 @@
 	?>
 <form method="POST" class="registration" id="product-form">
     <div>
-        <label for="ProductName"><?php echo $product_name;?> </label>
+        <label for="ProductName"><?php echo callLocalisation($language, $localisationArray[1]);?> </label>
         <input type="text" name="ProductName" id="ProductName" required>
     </div>
     <div>
-        <label for="Price"><?php echo $price_lang;?>, €</label>
+        <label for="Price"><?php echo callLocalisation($language, $localisationArray[2]);?>, €</label>
         <input type="number" name="Price" id="Price" required>
     </div>
     <div>
-        <label for="Gauge"><?php echo $cartridge_or_gauge_lang;?></label>
+        <label for="Gauge"><?php echo callLocalisation($language, $localisationArray[5]);?></label>
         <input type="text" name="Gauge" id="Gauge" required>
     </div>
     <div>
-        <label for="Finish"><?php echo $finish_lang;?></label>
+        <label for="Finish"><?php echo callLocalisation($language, $localisationArray[3]);?></label>
         <input type="text" name="Finish" id="Finish" required>
     </div>
     <div>
-        <label for="StockColor"><?php echo $stock_color_lang;?></label>
+        <label for="StockColor"><?php echo callLocalisation($language, $localisationArray[4]);?></label>
         <input type="text" name="StockColor" id="StockColor" required>
     </div>
 	<div>
 		<label for="Photo">Photo</label>
 		<input type="file" name="Photo" id="Photo" required>
 	</div>
-                        <!--    Image-->
     <div>
-        <button type="submit"><?php echo $add_lang;?></button>
+        <button type="submit" name="submit"><?php echo callLocalisation($language, $localisationArray[8]);?></button>
     </div>
     <div>
-        <a href="product.php"><?php echo $back_lang;?></a>
+        <a href="product.php"><?php echo callLocalisation($language, $localisationArray[9]);?></a>
     </div>
     <p class="error-message" id="error-message"></p>
 </form>
@@ -51,8 +50,8 @@ if (isset($_POST['ProductName'], $_POST['Price'], $_POST['Finish'], $_POST['Stoc
     $finish = $_POST['Finish'];
     $stockColor = $_POST['StockColor'];
 		$photo = $_POST['Photo'];
-		$photoData = $_FILES["Photo"];
-		var_dump($photoData);
+    $photoData = $_FILES['Photo']['name'];
+
 
     // Check if any of the required fields is empty
     if (empty($productName) || empty($price) || empty($gauge)|| empty($finish) || empty($stockColor) || empty($photo)) {
@@ -87,5 +86,15 @@ if (isset($_POST['ProductName'], $_POST['Price'], $_POST['Finish'], $_POST['Stoc
             fclose($fileHandle);
         }
     }
+
+
+// upload  an image
+		$target_dir = "../photos/guns/";
+		$target_file = $target_dir . basename($_FILES["Photo"]["name"]);
+		$uploadOk = 1;
+		$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+
+
 }
 ?>
