@@ -66,6 +66,7 @@ if (isset($_POST['ProductName'], $_POST['Price'], $_POST['Finish'], $_POST['Stoc
         while (!feof($fileHandle)) {
             $productLine = fgets($fileHandle);
             $productData = explode(";", $productLine);
+            $line = explode(",", $productLine);
 
             // Check if the product name already exists
             if ($productData[0] == $productName) {

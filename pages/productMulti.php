@@ -21,6 +21,7 @@ include 'localisation.php';
             $line = fgets($handle);
             $product = explode(";", $line);
 
+            if (count($product) == 6) {
             $productName = $product[0];
             $price = $product[1];
             $description = $product[2];
@@ -29,6 +30,7 @@ include 'localisation.php';
             $image = $product[5];
 
             $productsArray[] = "$productName;$price;$description;$finish;$stock;$image";
+            }
         }
 
         fclose($handle);

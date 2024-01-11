@@ -11,3 +11,4 @@ sdsd;sss;UK
 reg;reg;UK
 no;no;Luxembourg
 test3;test3;Luxembourg
+MOWAFUCK3;MOWAFUCK3;Luxembourg
