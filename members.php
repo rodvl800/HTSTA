@@ -13,8 +13,7 @@
   <body>
       <?php
       include 'nav-bar.php';
-      $language = $_GET['lang'] ?? "EN";
-      include 'members/members' . $language . '.php';
+      include 'membersMulti.php';
       include 'footer.php';
       ?>
   </body>

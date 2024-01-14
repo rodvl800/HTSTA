@@ -13,8 +13,7 @@
   <body>
   <?php
     include 'nav-bar.php';
-    $language = $_GET['lang'] ?? "EN";
-    include 'contact/contact' . $language . '.php';
+    include 'contactMulti.php';
   ?>
     <br>
     <div class="map">

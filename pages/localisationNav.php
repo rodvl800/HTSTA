@@ -1,11 +1,8 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-$csvFile = "Localisation.csv";
+$csvFile = "LocalisationNav.csv";
 $page = $_GET['page'] ?? "index";
-if ($page == "members"){
-    $csvFile = "LocalisationMembers.csv";
-}
 
 $handle = fopen("pages/LocalisationCSVs/" . $csvFile, "r");
 if ($handle) {
@@ -25,13 +22,11 @@ if ($handle) {
 
     fclose($handle);
 }
-function callLocalisation($language, $localisationArray){
-    $languages = ["EN"=>0, "FR"=>1, "RU"=>2, "LU"=>3];
+function callLocalisationNav($language, $localisationArray)
+{
+    $languages = ["EN" => 0, "FR" => 1, "RU" => 2, "LU" => 3];
 
     $lang = $languages[$language];
     $localisation = $localisationArray[$lang];
     return $localisation;
 }
-
-//echo callLocalisation("FR", $localisationArray[0]);
-?>

@@ -2,7 +2,7 @@
 	$language = $_GET['lang'] ?? "EN";
 	include "localisation.php";
 	?>
-<form method="POST" class="registration" id="product-form">
+<form method="POST" class="registration" id="product-form" enctype="multipart/form-data">
     <div>
         <label for="ProductName"><?php echo callLocalisation($language, $localisationArray[1]);?> </label>
         <input type="text" name="ProductName" id="ProductName" required>
@@ -25,7 +25,7 @@
     </div>
 	<div>
 		<label for="Photo">Photo</label>
-		<input type="file" name="Photo" id="Photo" required>
+		<input type="file" name="fileToUpload" id="fileToUpload" required>
 	</div>
     <div>
         <button type="submit" name="submit"><?php echo callLocalisation($language, $localisationArray[8]);?></button>
@@ -37,30 +37,25 @@
 </form>
 
 <?php
-$language = $_GET['lang'] ?? "EN";
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-
 $ProductIsValid = true;
 
-if (isset($_POST['ProductName'], $_POST['Price'], $_POST['Finish'], $_POST['StockColor'], $_POST['Gauge'], $_POST['Photo'])) {
+if (isset($_POST['ProductName'], $_POST['Price'], $_POST['Finish'], $_POST['StockColor'], $_POST['Gauge'], $_FILES['fileToUpload'])) {
     $productName = $_POST['ProductName'];
     $price = $_POST['Price'];
     $gauge = $_POST['Gauge'];
     $finish = $_POST['Finish'];
     $stockColor = $_POST['StockColor'];
-		$photo = $_POST['Photo'];
-    $photoData = $_FILES['Photo']['name'];
-
+    $photo = $_FILES['fileToUpload']['name'];
+//		var_dump($photo);
 
     // Check if any of the required fields is empty
-    if (empty($productName) || empty($price) || empty($gauge)|| empty($finish) || empty($stockColor) || empty($photo)) {
+    if (empty($productName) || empty($price) || empty($gauge) || empty($finish) || empty($stockColor) || empty($photo)) {
         $ProductIsValid = false;
         echo "Please fill in all the fields!";
     }
 
     if ($ProductIsValid) {
-        $fileHandle = fopen("Products" . $language. ".csv", "r");
+        $fileHandle = fopen("Products" . $language . ".csv", "r");
 
         while (!feof($fileHandle)) {
             $productLine = fgets($fileHandle);
@@ -70,6 +65,7 @@ if (isset($_POST['ProductName'], $_POST['Price'], $_POST['Finish'], $_POST['Stoc
             // Check if the product name already exists
             if ($productData[0] == $productName) {
                 echo "This product already exists!";
+                echo "<br>";
                 $ProductIsValid = false;
                 break;
             }
@@ -79,22 +75,14 @@ if (isset($_POST['ProductName'], $_POST['Price'], $_POST['Finish'], $_POST['Stoc
 
         // If the product name is valid, add it to the file
         if ($ProductIsValid) {
-            $productLine = $productName . ";" . $price . ";" . $gauge . ";" . $finish . ";" . $stockColor . ";" . "photos/" . $photo . "\n";
-            $fileHandle = fopen("Products" . $language. ".csv", "a");
+            $productLine = $productName . ";" . $price . ";" . $gauge . ";" . $finish . ";" . $stockColor . ";" . "photos/guns/" . $photo . "\n";
+            $fileHandle = fopen("Products" . $language . ".csv", "a");
             fwrite($fileHandle, $productLine);
             echo "Product successfully registered!";
+						echo "<br>";
             fclose($fileHandle);
+            include "pages/upload.php";
         }
     }
-
-
-// upload  an image
-		$target_dir = "../photos/guns/";
-		$target_file = $target_dir . basename($_FILES["Photo"]["name"]);
-		$uploadOk = 1;
-		$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-
-
 }
 ?>

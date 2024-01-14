@@ -13,19 +13,20 @@
 <?php
 include 'nav-bar.php';
 $language = $_GET['lang'] ?? "EN";
+include 'pages/localisation.php';
 ?>
 
 <form method="POST" class="registration" id="registration-form">
 	<div>
-		<label for="UserName">Please enter your username:</label>
+		<label for="UserName"><?php echo callLocalisation($language, $localisationArray[10]);?></label>
 		<input type="text" name="UserName" id="UserName" required>
 	</div>
 	<div>
-		<label for="Password">Please enter your password:</label>
+		<label for="Password"><?php echo callLocalisation($language, $localisationArray[11]);?></label>
 		<input type="password" name="Password" id="Password" required>
 	</div>
 	<div>
-		<button type="submit">Login</button>
+		<button type="submit"><?php echo callLocalisation($language, $localisationArray[12]);?></button>
 	</div>
 	<p class="error-message" id="error-message"></p>
 </form>

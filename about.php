@@ -13,17 +13,13 @@
   <body>
     <?php
     include 'nav-bar.php';
-
-    $language = $_GET['lang'] ?? "EN";
-    include 'about/about' . $language . '.php';
+    include 'aboutMulti.php';
     ?>
 
     <img id="safety" src="photos/safety.jpg" alt="safety">
 
-    <div class="footer">
-      <p>
-        @Rodomanov Vladislav 4TPIFI
-      </p>
-    </div>
+		<?php
+		include 'footer.php';
+		?>
   </body>
 </html>
