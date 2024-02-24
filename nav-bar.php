@@ -1,4 +1,17 @@
 <?php
+session_start();
+$_SESSION["UserLoggedIn"] = $_SESSION["UserLoggedIn"] ?? false;
+
+if (isset($_POST["Logout"])) {
+    $_SESSION["UserLoggedIn"] = false;
+    $_SESSION["username"] = "";
+    $_SESSION["password"] = "";
+    session_unset();
+    session_destroy();
+    header("Refresh:0, url=index.php");
+    die();
+}
+
 $language = $_GET['lang'] ?? "EN";
 $page = $_GET['page'] ?? "index";
 include 'pages/localisationNav.php';
@@ -24,10 +37,29 @@ if ($page == "about") {
 ?>
 
 <nav class="container">
-	<ul class="login-links">
-		        <li><a class="<?php echo $pageRegister; ?>" href="register.php?page=register"><?php echo callLocalisationNav($language, $localisationArray[6]);?></a></li>
-						<li><a class="<?php echo $pageLogin; ?>" href="login.php?page=login"><?php echo callLocalisationNav($language, $localisationArray[5]);?></a></li>
-	</ul>
+		<?php
+		if ($_SESSION["UserLoggedIn"]){
+		?>
+				<ul class="login-links">
+					<li><p>You are logged in</p></li>
+					<li>
+						<form method="POST" >
+							<input type="submit" name="Logout" value="Logout">
+						</form>
+					</li>
+				</ul>
+
+				<?php
+		}
+		else {
+    ?>
+        <ul class="login-links">
+					<li><a class="<?php echo $pageRegister; ?>" href="register.php?page=register"><?php echo callLocalisationNav($language, $localisationArray[6]);?></a></li>
+					<li><a class="<?php echo $pageLogin; ?>" href="login.php?page=login"><?php echo callLocalisationNav($language, $localisationArray[5]);?></a></li>
+				</ul>
+        <?php
+    }
+		?>
     <a href="index.php?page=index" class="logo"><img src="photos/logo.png" alt="logo"></a>
     <div class="heading">
         <h4>Emile Metz Gun shop</h4>

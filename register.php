@@ -40,53 +40,51 @@ include 'pages/localisation.php';
 		</select>
 	</div>
 	<div>
-		<button type="submit"><?php echo callLocalisation($language, $localisationArray[15]);?></button>
+		<button type="submit" name="submit" ""><?php echo callLocalisation($language, $localisationArray[15]);?></button>
 	</div>
 	<p class="error-message" id="error-message"></p>
 </form>
 
+
 <?php
-$UserIsValid = true;
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 
-if (isset($_POST['UserName'], $_POST['Password'], $_POST['PasswordAgain'], $_POST['Country'])) {
-    $userName = $_POST['UserName'];
-    $password = $_POST['Password'];
-    $passwordAgain = $_POST['PasswordAgain'];
-    $country = $_POST['Country'];
+require_once 'dbconfig.php';
 
-    // Check if any of the required fields are empty
-    if (empty($userName) || empty($password) || empty($passwordAgain)) {
-        $UserIsValid = false;
-        echo "Please fill in all the fields!";
-    } elseif ($password !== $passwordAgain) {
-        echo "Passwords do not match!";
-        $UserIsValid = false;
+
+$errors = array(); //Array to push and display errors to the user
+if (isset($_POST['submit']))
+{
+    $UserName = mysqli_real_escape_string($db, $_POST['UserName']);
+    $Password = mysqli_real_escape_string($db, $_POST['Password']);
+    $PasswordAgain = mysqli_real_escape_string($db, $_POST['PasswordAgain']);
+		$Country = mysqli_real_escape_string($db, $_POST['Country']);
+//checking if the passwords entered in both fields are same or not
+    if($Password != $PasswordAgain)
+    {
+        array_push($errors, "Passwords do not match.");
     }
-
-    if ($UserIsValid) {
-        $fileHandle = fopen("users.txt", "r");
-
-        while (!feof($fileHandle)) {
-            $userLine = fgets($fileHandle);
-            $userData = explode(";", $userLine);
-
-            // Check if the username already exists
-            if ($userData[0] == $userName) {
-                echo "This user already exists!";
-                $UserIsValid = false;
-                break;
-            }
-        }
-        fclose($fileHandle);
-
-
-        // If the username is valid, register the user
-        if ($UserIsValid) {
-            $userLine = $userName . ";" . $password . ";" . $country . "\n";
-            $fileHandle = fopen("users.txt", "a");
-            fwrite($fileHandle, $userLine);
-            echo "User successfully registered!";
-            fclose($fileHandle);
+//register the user if there are no errors
+    if (count($errors) == 0)
+    {
+        //encrypting the password
+        $password = password_hash($Password, PASSWORD_DEFAULT);
+//finally registering the user
+        $query = "INSERT INTO users (username, password_hash, country) VALUES ('$UserName', '$password', '$Country')";
+        mysqli_query($db, $query);
+//checking if the user has been successfully registered by fetching in their details associated with the email
+        $query = "SELECT * FROM users WHERE username = '$UserName'";
+        $results = mysqli_query($db, $query);
+        if ($results == true) {
+						//logging in and sending user to the user dashboard page
+						$_SESSION["UserLoggedIn"] = true;
+						$_SESSION["username"] = $UserName;
+            echo "Successfully registered!";
+            header('location: cart.php');
+				}
+				else {
+					echo "Error: " . $query . "<br>" . $db->error;
         }
     }
 }

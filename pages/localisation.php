@@ -34,4 +34,3 @@ function callLocalisation($language, $localisationArray){
 }
 
 //echo callLocalisation("FR", $localisationArray[0]);
-?>

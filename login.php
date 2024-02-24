@@ -11,67 +11,78 @@
 </head>
 <body>
 <?php
+$errors_login = array();
 include 'nav-bar.php';
 $language = $_GET['lang'] ?? "EN";
-include 'pages/localisation.php';
-?>
 
-<form method="POST" class="registration" id="registration-form">
-	<div>
-		<label for="UserName"><?php echo callLocalisation($language, $localisationArray[10]);?></label>
-		<input type="text" name="UserName" id="UserName" required>
-	</div>
-	<div>
-		<label for="Password"><?php echo callLocalisation($language, $localisationArray[11]);?></label>
-		<input type="password" name="Password" id="Password" required>
-	</div>
-	<div>
-		<button type="submit"><?php echo callLocalisation($language, $localisationArray[12]);?></button>
-	</div>
-	<p class="error-message" id="error-message"></p>
-</form>
 
-<?php
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-$UserIsValid = true;
-$UserNotFound = false;
+require_once 'dbconfig.php';
 
-if (isset($_POST['UserName'], $_POST['Password'])) {
-    $userName = $_POST['UserName'];
-    $password = $_POST['Password'];
 
-    // Check if any of the required fields are empty
-    if (empty($userName) || empty($password)){
-        $UserIsValid = false;
-        echo "Please fill in all the fields!";
+if (isset($_SESSION["UserLoggedIn"])) {
+//pass
+} else {
+	$_SESSION["UserLoggedIn"] = false;
+}
+
+
+if (!$_SESSION["UserLoggedIn"]) {
+	?>
+	<form method="POST" class="registration" id="registration-form">
+		<label>Enter username
+			<input type="text" name="username">
+		</label><br>
+		<label>Enter password
+			<input type="password" name="password">
+		</label><label></label><br>
+			<button type="submit" value="Login" name="Login">Login</button>
+	</form>
+<?php
+}
+else {
+	header('location: cart.php');
+}
+
+
+if (isset($_POST["Login"])) {
+		// Fetch and validate user inputs
+		$username = mysqli_real_escape_string($db, $_POST['username']);
+		$password = mysqli_real_escape_string($db, $_POST['password']);
+
+		$query = "SELECT * FROM users WHERE username = ?";
+		$stmt = mysqli_prepare($db, $query);
+		mysqli_stmt_bind_param($stmt, "s", $username);
+		mysqli_stmt_execute($stmt);
+
+		$result = mysqli_stmt_get_result($stmt);
+
+		if ($user_data_row = mysqli_fetch_assoc($result)) {
+				if (password_verify($password, $user_data_row['password_hash'])) {
+						$_SESSION["UserLoggedIn"] = true;
+						header('location: cart.php'); 						// Successful login
+						exit();
+				} else {
+						array_push($errors_login, "Wrong credentials. Please try again.");
+				}
+		} else {
+        array_push($errors_login, "Username not found. Do you want to <a href='register.php'>register</a>?");
 		}
 
-    if ($UserIsValid) {
-        $fileHandle = fopen("users.txt", "r");
-
-        while (!feof($fileHandle)) {
-            $userLine = fgets($fileHandle);
-            $userData = explode(";", $userLine);
-
-            // Check if the username already exists
-            if (($userData[0] == $userName) && ($userData[1] == $password)) {
-                echo "<h3> Welcome, " . $userName . " from " . $userData[2] . "</h3>";
-								$UserIsValid = false;
-								$UserNotFound = false;
-								break;
-            }
-						else {
-								$UserNotFound = true;
-						}
-        }
-        fclose($fileHandle);
-				if ($UserNotFound){
-            echo "<h3>User does not exist. Do you want to <a href='register.php'>register?</a></h3>";
-				}
-    }
+		mysqli_stmt_close($stmt);
 }
-?>
+
+
+if (!empty($errors_login)): ?>
+<div style="color: red;">
+	<ul>
+      <?php foreach ($errors_login as $error): ?>
+				<li><?php echo $error; ?></li>
+      <?php endforeach; ?>
+	</ul>
+</div>
+<?php endif; ?>
 </body>
 </html>
