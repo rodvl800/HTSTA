@@ -15,7 +15,7 @@ if (isset($_POST["Logout"])) {
 $language = $_GET['lang'] ?? "EN";
 $page = $_GET['page'] ?? "index";
 include 'pages/localisationNav.php';
-global $pageIndex, $pageAbout, $pageContact, $pageProduct, $pageMembers, $pageRegister, $pageLogin;
+global $pageIndex, $pageAbout, $pageContact, $pageProduct, $pageMembers, $pageRegister, $pageLogin, $pageCart;
 
 if ($page == "about") {
     $pageAbout = "active";
@@ -31,7 +31,10 @@ if ($page == "about") {
 		$pageLogin = "active";
 } else if($page == "AddProduct") {
     $pageProduct = "active";
-}else{
+} else if($page == "cart") {
+		$pageCart = "active";
+}
+else{
     $pageIndex = "active";
 }
 ?>
@@ -44,8 +47,10 @@ if ($page == "about") {
 					<li><p>You are logged in</p></li>
 					<li>
 						<form method="POST" >
-							<input type="submit" name="Logout" value="Logout">
+							<input type="submit" name="Logout" value="<?php echo callLocalisationNav($language, $localisationArray[7]);?>">
+							<a class="<?php echo $pageCart; ?>" href="cart.php?page=cart"><?php echo callLocalisationNav($language, $localisationArray[8]);?></a>
 						</form>
+
 					</li>
 				</ul>
 

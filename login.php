@@ -62,7 +62,7 @@ if (isset($_POST["Login"])) {
 		if ($user_data_row = mysqli_fetch_assoc($result)) {
 				if (password_verify($password, $user_data_row['password_hash'])) {
 						$_SESSION["UserLoggedIn"] = true;
-						header('location: cart.php'); 						// Successful login
+						header('location: cart.php?page=cart'); 						// Successful login
 						exit();
 				} else {
 						array_push($errors_login, "Wrong credentials. Please try again.");

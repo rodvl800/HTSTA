@@ -40,7 +40,7 @@ include 'pages/localisation.php';
 		</select>
 	</div>
 	<div>
-		<button type="submit" name="submit" ""><?php echo callLocalisation($language, $localisationArray[15]);?></button>
+		<button type="submit" name="submit" ""><?php echo callLocalisation($language, $localisationArray[15]);?>
 	</div>
 	<p class="error-message" id="error-message"></p>
 </form>
@@ -54,8 +54,7 @@ require_once 'dbconfig.php';
 
 
 $errors = array(); //Array to push and display errors to the user
-if (isset($_POST['submit']))
-{
+if (isset($_POST['submit'])) {
     $UserName = mysqli_real_escape_string($db, $_POST['UserName']);
     $Password = mysqli_real_escape_string($db, $_POST['Password']);
     $PasswordAgain = mysqli_real_escape_string($db, $_POST['PasswordAgain']);
@@ -66,8 +65,7 @@ if (isset($_POST['submit']))
         array_push($errors, "Passwords do not match.");
     }
 //register the user if there are no errors
-    if (count($errors) == 0)
-    {
+    if (count($errors) == 0) {
         //encrypting the password
         $password = password_hash($Password, PASSWORD_DEFAULT);
 //finally registering the user
@@ -75,19 +73,30 @@ if (isset($_POST['submit']))
         mysqli_query($db, $query);
 //checking if the user has been successfully registered by fetching in their details associated with the email
         $query = "SELECT * FROM users WHERE username = '$UserName'";
-        $results = mysqli_query($db, $query);
-        if ($results == true) {
-						//logging in and sending user to the user dashboard page
-						$_SESSION["UserLoggedIn"] = true;
-						$_SESSION["username"] = $UserName;
-            echo "Successfully registered!";
-            header('location: cart.php');
-				}
-				else {
-					echo "Error: " . $query . "<br>" . $db->error;
-        }
+				$results = mysqli_query($db, $query);
+            if ($results) {
+                //logging in and sending user to the user dashboard page
+                $_SESSION["UserLoggedIn"] = true;
+                $_SESSION["username"] = $UserName;
+                echo "Successfully registered!";
+                header('location: cart.php?page=cart');
+            }
+						else {
+							echo "test";
+						}
+
     }
 }
-?>
+
+
+if (!empty($errors)): ?>
+<div style="color: red;">
+	<ul>
+      <?php foreach ($errors as $error): ?>
+				<li><?php echo $error; ?></li>
+      <?php endforeach; ?>
+	</ul>
+</div>
+<?php endif; ?>
 </body>
 </html>
