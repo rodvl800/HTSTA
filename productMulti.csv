@@ -1,6 +1,0 @@
-product_id;ProductName;Price;Cartridge or Gauge;Finish;FinnishFR;FinishLU;FinishRU;Stock Color;Stock ColorFR;Stock ColorLU;Stock ColorRU;Image;Quantity
-1;Springfield Semi-Auto Pistol;579.99;9mm;Black;Noir;Schwaarz;Черный;Black;Noir;Schwaarz;Черный;photos/guns/1.png;100
-2;M&P15 Semi-Auto Rifle;799.99;5.56x45mm;Black;Noir;Schwaarz;Черный;Black;Noir;Schwaarz;Черный;photos/guns/2.png;100
-3;Ruger Wrangler Rimfire Revolver;209.99;.22 Long Rifle;Black Cerakote;Noir;Schwaarz Cerakote;Черный Серакоте;Black;Noir;Schwaarz;Черный;photos/guns/3.png;100
-4;Crickett Single-Shot Rimfire Rifle;239.99;.22 Long Rifle;Blue;Bleui;Blo;Синеватый;Stratifi violet;Stratifi violet;Violett Laminat;Фиолетовый ламинат;photos/guns/4.png;100
-5;Savage Bolt Rifle in TrueTimber Strata;399.99;.223 Remington;Black;Noir;Schwaarz;Черный;Camouflage;Camouflage;Tarnung;Камуфляж;photos/guns/5.png;100

@@ -16,12 +16,6 @@ include 'nav-bar.php';
 $language = $_GET['lang'] ?? "EN";
 
 
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-
-require_once 'dbconfig.php';
-
-
 if (isset($_SESSION["UserLoggedIn"])) {
 //pass
 } else {

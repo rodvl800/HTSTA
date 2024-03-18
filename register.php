@@ -47,12 +47,6 @@ include 'pages/localisation.php';
 
 
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-
-require_once 'dbconfig.php';
-
-
 $errors = array(); //Array to push and display errors to the user
 if (isset($_POST['submit'])) {
     $UserName = mysqli_real_escape_string($db, $_POST['UserName']);

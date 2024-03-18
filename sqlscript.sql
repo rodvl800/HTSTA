@@ -1,8 +1,8 @@
--- 1. Create the table with auto-incrementing product ID
-CREATE TABLE `users` (
-  `user_id` INT NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(255) NOT NULL,
-  `password_hash` VARCHAR(255) NOT NULL,
-  `city` VARCHAR(255) DEFAULT NULL,
-  PRIMARY KEY (`user_id`)
+CREATE TABLE `localisation` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `EN` varchar(255) COLLATE utf8mb4_general_ci,
+    `FR` varchar(255) COLLATE utf8mb4_general_ci,
+    `RU` varchar(255) COLLATE utf8mb4_general_ci,
+    `LU` varchar(255) COLLATE utf8mb4_general_ci,
+    PRIMARY KEY (id)
 );

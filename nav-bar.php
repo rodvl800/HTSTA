@@ -1,5 +1,9 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+
 session_start();
+require_once 'dbconfig.php';
 $_SESSION["UserLoggedIn"] = $_SESSION["UserLoggedIn"] ?? false;
 
 if (isset($_POST["Logout"])) {
@@ -14,7 +18,7 @@ if (isset($_POST["Logout"])) {
 
 $language = $_GET['lang'] ?? "EN";
 $page = $_GET['page'] ?? "index";
-include 'pages/localisationNav.php';
+include 'pages/localisationDB.php';
 global $pageIndex, $pageAbout, $pageContact, $pageProduct, $pageMembers, $pageRegister, $pageLogin, $pageCart;
 
 if ($page == "about") {
@@ -47,8 +51,8 @@ else{
 					<li><p>You are logged in</p></li>
 					<li>
 						<form method="POST" >
-							<input type="submit" name="Logout" value="<?php echo callLocalisationNav($language, $localisationArray[7]);?>">
-							<a class="<?php echo $pageCart; ?>" href="cart.php?page=cart"><?php echo callLocalisationNav($language, $localisationArray[8]);?></a>
+							<input type="submit" name="Logout" value="<?php echo callLocalisationDB($language, 57);?>">
+							<a class="<?php echo $pageCart; ?>" href="cart.php?page=cart"><?php echo callLocalisationDB($language, 58);?></a>
 						</form>
 
 					</li>
@@ -59,8 +63,8 @@ else{
 		else {
     ?>
         <ul class="login-links">
-					<li><a class="<?php echo $pageRegister; ?>" href="register.php?page=register"><?php echo callLocalisationNav($language, $localisationArray[6]);?></a></li>
-					<li><a class="<?php echo $pageLogin; ?>" href="login.php?page=login"><?php echo callLocalisationNav($language, $localisationArray[5]);?></a></li>
+					<li><a class="<?php echo $pageRegister; ?>" href="register.php?page=register"><?php echo callLocalisationDB($language, 56);?></a></li>
+					<li><a class="<?php echo $pageLogin; ?>" href="login.php?page=login"><?php echo callLocalisationDB($language, 55);?></a></li>
 				</ul>
         <?php
     }
@@ -70,14 +74,14 @@ else{
         <h4>Emile Metz Gun shop</h4>
     </div>
     <ul class="nav-links">
-        <li><a class="<?php echo $pageIndex; ?>" href="index.php?page=index"><?php echo callLocalisationNav($language, $localisationArray[0]);?></a><br><br>
+        <li><a class="<?php echo $pageIndex; ?>" href="index.php?page=index"><?php echo callLocalisationDB($language, 50);?></a><br><br>
             <a href="<?php echo $page;?>.php?lang=EN&page=<?php echo $page;?>"><img src="photos/EN-icon.png" alt=""></a></li>
-        <li><a class="<?php echo $pageAbout; ?>" href="about.php?page=about"><?php echo callLocalisationNav($language, $localisationArray[1]);?></a><br><br>
+        <li><a class="<?php echo $pageAbout; ?>" href="about.php?page=about"><?php echo callLocalisationDB($language, 51);?></a><br><br>
             <a href="<?php echo $page;?>.php?lang=FR&page=<?php echo $page;?>"><img src="photos/FR-icon.png" alt=""></a></li>
-        <li><a class="<?php echo $pageContact; ?>" href="contact.php?page=contact"><?php echo callLocalisationNav($language, $localisationArray[2]);?></a><br><br>
+        <li><a class="<?php echo $pageContact; ?>" href="contact.php?page=contact"><?php echo callLocalisationDB($language, 52);?></a><br><br>
             <a href="<?php echo $page;?>.php?lang=LU&page=<?php echo $page;?>"><img src="photos/LU-icon.png" alt=""></a></li>
-        <li><a class="<?php echo $pageProduct; ?>" href="product.php?page=product"><?php echo callLocalisationNav($language, $localisationArray[3]);?></a><br><br>
+        <li><a class="<?php echo $pageProduct; ?>" href="product.php?page=product"><?php echo callLocalisationDB($language, 53);?></a><br><br>
             <a href="<?php echo $page;?>.php?lang=RU&page=<?php echo $page;?>"><img src="photos/RU-icon.png" alt=""></a></li>
-        <li><a class="<?php echo $pageMembers; ?>" href="members.php?page=members"><?php echo callLocalisationNav($language, $localisationArray[4]);?></a></li>
+        <li><a class="<?php echo $pageMembers; ?>" href="members.php?page=members"><?php echo callLocalisationDB($language, 54);?></a></li>
 		</ul>
 </nav>
