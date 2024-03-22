@@ -13,8 +13,31 @@
   <body>
       <?php
       include 'nav-bar.php';
-      include 'membersMulti.php';
-      include 'footer.php';
-      ?>
+			$language = $_GET['lang'] ?? "EN";
+			?>
+			<div class="body-text"><h1><?php echo callLocalisation($language, 30);?></h1></div>
+			<div class="hierarchy">
+				<table>
+					<tr>
+						<th><?php echo callLocalisation($language, 31);?></th>
+						<th><?php echo callLocalisation($language, 32);?></th>
+						<th><?php echo callLocalisation($language, 33);?></th>
+					</tr>
+            <?php
+            for ($i = 1; $i <6; $i++){
+                echo "<tr>";
+                for ($j = 1; $j < 4; $j++){
+                    echo "<td>";
+                    echo callLocalisation($language, 30 +($i * 3 + $j));
+                    echo "</td>";
+                }
+                echo "</tr>";
+            }
+            ?>
+				</table>
+			</div>
+			<?php
+			include 'footer.php';
+			?>
   </body>
 </html>

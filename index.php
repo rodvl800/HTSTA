@@ -11,8 +11,15 @@
 <body>
 <?php
 include 'nav-bar.php';
-include 'pages/indexMulti.php';
+$language = $_GET['lang'] ?? "EN";
 ?>
+<div class="body-text">
+	<h1>
+      <?php echo callLocalisation($language, 23);?>
+	</h1>
+</div>
+<br><br>
+<p class="description"><?php echo callLocalisation($language, 24);?></p>
 <div class="photos">
     <img id="footimg1" src="photos/ak47.png"  alt="ak47">
     <img id="footimg2" src="photos/guns.png" alt="guns" >

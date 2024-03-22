@@ -1,6 +1,6 @@
 <?php
 require_once 'dbconfig.php';
-function callLocalisationDB($language, $index) {
+function callLocalisation($language, $index) {
     global $db;
     $language = mysqli_real_escape_string($db, $language);
 

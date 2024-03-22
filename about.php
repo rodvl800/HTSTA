@@ -13,8 +13,20 @@
   <body>
     <?php
     include 'nav-bar.php';
-    include 'aboutMulti.php';
-    ?>
+		$language = $_GET['lang'] ?? "EN";
+		?>
+		<div class="body-text-about"><h1><?php echo callLocalisation($language, 17);?></h1></div>
+		<div class="about">
+			<ul id="ul">
+				<li><?php echo callLocalisation($language, 18);?></li>
+				<li><?php echo callLocalisation($language, 19);?></li>
+				<li><?php echo callLocalisation($language, 20);?></li>
+			</ul>
+		</div>
+		<div>
+			<h2 class="description-heading"><?php echo callLocalisation($language, 21);?></h2>
+			<p class="description-text"><?php echo callLocalisation($language, 22);?></p>
+		</div>
 
     <img id="safety" src="photos/safety.jpg" alt="safety">
 

@@ -26,13 +26,13 @@ if (isset($_SESSION["UserLoggedIn"])) {
 if (!$_SESSION["UserLoggedIn"]) {
 	?>
 	<form method="POST" class="registration" id="registration-form">
-		<label>Enter username
+		<label><?php echo callLocalisation($language, 11);?>
 			<input type="text" name="username">
 		</label><br>
-		<label>Enter password
+		<label><?php echo callLocalisation($language, 12);?>
 			<input type="password" name="password">
 		</label><label></label><br>
-			<button type="submit" value="Login" name="Login">Login</button>
+			<button type="submit" value="Login" name="Login"><?php echo callLocalisation($language, 13);?></button>
 	</form>
 <?php
 }
