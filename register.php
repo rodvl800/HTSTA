@@ -52,32 +52,30 @@ if (isset($_POST['submit'])) {
     $Password = mysqli_real_escape_string($db, $_POST['Password']);
     $PasswordAgain = mysqli_real_escape_string($db, $_POST['PasswordAgain']);
 		$Country = mysqli_real_escape_string($db, $_POST['Country']);
-//checking if the passwords entered in both fields are same or not
+    //checking if the passwords entered in both fields are same or not
     if($Password != $PasswordAgain)
     {
         array_push($errors, "Passwords do not match.");
     }
-//register the user if there are no errors
+    //register the user if there are no errors
     if (count($errors) == 0) {
         //encrypting the password
         $password = password_hash($Password, PASSWORD_DEFAULT);
-//finally registering the user
+        //finally registering the user
         $query = "INSERT INTO users (username, password_hash, country) VALUES ('$UserName', '$password', '$Country')";
         mysqli_query($db, $query);
-//checking if the user has been successfully registered by fetching in their details associated with the email
+        //checking if the user has been successfully registered by fetching in their details associated with the email
         $query = "SELECT * FROM users WHERE username = '$UserName'";
 				$results = mysqli_query($db, $query);
             if ($results) {
-                //logging in and sending user to the user dashboard page
+                //logging in and sending user to the user cart page
                 $_SESSION["UserLoggedIn"] = true;
                 $_SESSION["username"] = $UserName;
-                echo "Successfully registered!";
                 header('location: cart.php?page=cart');
             }
 						else {
 							echo "test";
 						}
-
     }
 }
 

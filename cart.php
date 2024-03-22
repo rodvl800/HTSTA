@@ -17,7 +17,6 @@ if (!$_SESSION["UserLoggedIn"]){
     header('location: login.php');
 }
 $language = $_GET['lang'] ?? "EN";
-include 'pages/localisation.php';
 ?>
 <h1>This is your cart</h1>
 </body>
