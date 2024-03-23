@@ -1,21 +1,24 @@
 <?php
 session_start();
-require_once 'dbconfig.php';
+require_once 'backend/dbconfig.php';
 $_SESSION["UserLoggedIn"] = $_SESSION["UserLoggedIn"] ?? false;
 
 if (isset($_POST["Logout"])) {
     $_SESSION["UserLoggedIn"] = false;
     $_SESSION["username"] = "";
     $_SESSION["password"] = "";
+    $_SESSION["isAdmin"] = false;
     session_unset();
     session_destroy();
     header("Refresh:0, url=index.php");
     die();
 }
 
+var_dump($_SESSION);
+
 $language = $_GET['lang'] ?? "EN";
 $page = $_GET['page'] ?? "index";
-include 'pages/localisation.php';
+include 'backend/localisation.php';
 global $pageIndex, $pageAbout, $pageContact, $pageProduct, $pageMembers, $pageRegister, $pageLogin, $pageCart;
 
 if ($page == "about") {

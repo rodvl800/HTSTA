@@ -97,7 +97,7 @@ if (isset($_POST['ProductName'], $_POST['Price'], $_POST['Finish'], $_POST['Stoc
             echo "Product successfully registered!";
             echo "<br>";
             fclose($fileHandle);
-            include "pages/upload.php";
+            include "backend/upload.php";
         }
     }
 }

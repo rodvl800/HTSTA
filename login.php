@@ -36,10 +36,12 @@ if (!$_SESSION["UserLoggedIn"]) {
 	</form>
 <?php
 }
-else {
-	header('location: cart.php');
+else if ($_SESSION["UserLoggedIn"] && $_SESSION["isAdmin"]) {
+	header('location: admin.php?page=admin');
 }
-
+else {
+	header('location: cart.php?page=cart');
+}
 
 if (isset($_POST["Login"])) {
 		// Fetch and validate user inputs
@@ -56,10 +58,18 @@ if (isset($_POST["Login"])) {
 		if ($user_data_row = mysqli_fetch_assoc($result)) {
 				if (password_verify($password, $user_data_row['password_hash'])) {
 						$_SESSION["UserLoggedIn"] = true;
-						header('location: cart.php?page=cart'); 						// Successful login
+						$_SESSION["username"] = $username;
+						if ($user_data_row["isAdmin"]) {
+							$_SESSION["isAdmin"] = true;
+							header('location: admin.php?page=admin'); // Successful login as admin
+						}
+						else {
+							$_SESSION["isAdmin"] = false;
+							header('location: cart.php?page=cart'); // Successful login
+						}						
 						exit();
 				} else {
-						array_push($errors_login, "Wrong credentials. Please try again.");
+						array_push($errors_login, "Wrong password. Please try again.");
 				}
 		} else {
         array_push($errors_login, "Username not found. Do you want to <a href='register.php'>register</a>?");
@@ -70,13 +80,13 @@ if (isset($_POST["Login"])) {
 
 
 if (!empty($errors_login)): ?>
-<div style="color: red;">
+<h3 style="color: red;">
 	<ul>
       <?php foreach ($errors_login as $error): ?>
 				<li><?php echo $error; ?></li>
       <?php endforeach; ?>
 	</ul>
-</div>
+	  </h3>
 <?php endif; ?>
 </body>
 </html>

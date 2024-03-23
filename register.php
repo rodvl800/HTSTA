@@ -39,7 +39,7 @@ $language = $_GET['lang'] ?? "EN";
 		</select>
 	</div>
 	<div>
-		<button type="submit" name="submit" ""><?php echo callLocalisation($language, 16);?>
+		<button type="submit" name="submit"><?php echo callLocalisation($language, 16);?>
 	</div>
 	<p class="error-message" id="error-message"></p>
 </form>
@@ -57,6 +57,16 @@ if (isset($_POST['submit'])) {
     {
         array_push($errors, "Passwords do not match.");
     }
+
+	//checking if the username is already taken
+	$user_check_query = "SELECT * FROM users WHERE username='$UserName' LIMIT 1";
+	$result = mysqli_query($db, $user_check_query);
+	$user = mysqli_fetch_assoc($result);
+	if ($user) { // if user exists
+		if ($user['username'] === $UserName) {
+			array_push($errors, "Username already exists.");
+		}
+	}
     //register the user if there are no errors
     if (count($errors) == 0) {
         //encrypting the password
@@ -81,13 +91,13 @@ if (isset($_POST['submit'])) {
 
 
 if (!empty($errors)): ?>
-<div style="color: red;">
+<h3 style="color: red;">
 	<ul>
       <?php foreach ($errors as $error): ?>
 				<li><?php echo $error; ?></li>
       <?php endforeach; ?>
 	</ul>
-</div>
+</h3>
 <?php endif; ?>
 </body>
 </html>
