@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="master.css"/>
+    <link rel="icon" type="image/png" href="photos/logo.png">
+    <title>Register</title>
+</head>
+
+<body>
+<?php
+include 'nav-bar.php';
+if (!$_SESSION["UserLoggedIn"] || !$_SESSION["isAdmin"]){
+    header('location: login.php');
+}
+$language = $_GET['lang'] ?? "EN";
+?>
+<h1>Admin page</h1>
+</body>
+</html>
